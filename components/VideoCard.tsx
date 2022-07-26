@@ -14,6 +14,7 @@ interface IProps {
 //NextPage is a type exported by NextJS. When we write Page: NextPage we're saying that our Page component is of type NextPage.
 const VideoCard: NextPage<IProps> = ({ post }) => {
   const [isHover, setIsHover] = useState(false);
+  const [touch, setTouch] = useState(false)
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null); //specifying type of video element
@@ -72,6 +73,8 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         <div
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)} 
+            onTouchStart ={() => setIsHover(true)} 
+            // onTouchLeave ={() => setIsHover(false)} 
             className="rounded-3xl">
           <Link href={`/detail/${post._id}`}>
             <video
